@@ -51,16 +51,21 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: IconAnimator(
                     icon: Icons.radio_button_unchecked,
                     loop: 1,
-                    animates: [
-                      IconAnimate(size: 0, duration: 100),
-                      IconAnimate(size: 4, color: Colors.red, duration: 100),
-                      IconAnimate(size: 8, duration: 100),
-                      IconAnimate(size: 12, color: Colors.red, duration: 100),
-                      IconAnimate(size: 16, duration: 100),
-                      IconAnimate(size: 20, color: Colors.blue, duration: 150),
-                      IconAnimate(size: 24, color: Colors.blue, duration: 200),
-                      IconAnimate(size: 28, color: Colors.blue, duration: 250),
-                      IconAnimate(size: 32, color: Colors.blue, duration: 300),
+                    children: [
+                      AnimationFrame(size: 0, duration: 100),
+                      AnimationFrame(size: 4, color: Colors.red, duration: 100),
+                      AnimationFrame(size: 8, duration: 100),
+                      AnimationFrame(
+                          size: 12, color: Colors.red, duration: 100),
+                      AnimationFrame(size: 16, duration: 100),
+                      AnimationFrame(
+                          size: 20, color: Colors.blue, duration: 150),
+                      AnimationFrame(
+                          size: 24, color: Colors.blue, duration: 200),
+                      AnimationFrame(
+                          size: 28, color: Colors.blue, duration: 250),
+                      AnimationFrame(
+                          size: 32, color: Colors.blue, duration: 300),
                     ],
                   ),
                 ),
@@ -70,15 +75,22 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: IconAnimator(
                     icon: Icons.lens,
                     loop: 2,
-                    animates: [
-                      IconAnimate(size: 0, duration: 100),
-                      IconAnimate(size: 4, color: Colors.green, duration: 100),
-                      IconAnimate(size: 8, color: Colors.green, duration: 100),
-                      IconAnimate(size: 16, color: Colors.green, duration: 100),
-                      IconAnimate(size: 20, color: Colors.green, duration: 150),
-                      IconAnimate(size: 24, color: Colors.green, duration: 200),
-                      IconAnimate(size: 28, color: Colors.green, duration: 250),
-                      IconAnimate(size: 32, color: Colors.green, duration: 300),
+                    children: [
+                      AnimationFrame(size: 0, duration: 100),
+                      AnimationFrame(
+                          size: 4, color: Colors.green, duration: 100),
+                      AnimationFrame(
+                          size: 8, color: Colors.green, duration: 100),
+                      AnimationFrame(
+                          size: 16, color: Colors.green, duration: 100),
+                      AnimationFrame(
+                          size: 20, color: Colors.green, duration: 150),
+                      AnimationFrame(
+                          size: 24, color: Colors.green, duration: 200),
+                      AnimationFrame(
+                          size: 28, color: Colors.green, duration: 250),
+                      AnimationFrame(
+                          size: 32, color: Colors.green, duration: 300),
                     ],
                   ),
                 ),
@@ -89,21 +101,21 @@ class _MyHomePageState extends State<MyHomePage> {
                     icon: Icons.favorite,
                     finish: SizedBox.shrink(),
                     loop: 3,
-                    animates: [
-                      IconAnimate(size: 0, duration: 100),
-                      IconAnimate(
+                    children: [
+                      AnimationFrame(size: 0, duration: 100),
+                      AnimationFrame(
                           size: 4, color: Colors.amber[100], duration: 100),
-                      IconAnimate(
+                      AnimationFrame(
                           size: 8, color: Colors.amber[200], duration: 100),
-                      IconAnimate(
+                      AnimationFrame(
                           size: 16, color: Colors.amber[300], duration: 100),
-                      IconAnimate(
+                      AnimationFrame(
                           size: 20, color: Colors.amber[400], duration: 150),
-                      IconAnimate(
+                      AnimationFrame(
                           size: 24, color: Colors.amber[500], duration: 200),
-                      IconAnimate(
+                      AnimationFrame(
                           size: 28, color: Colors.amber[600], duration: 250),
-                      IconAnimate(
+                      AnimationFrame(
                           size: 32, color: Colors.amber[700], duration: 300),
                     ],
                   ),
@@ -114,9 +126,9 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: IconAnimator(
                     loop: 5,
                     finish: SizedBox.shrink(),
-                    animates: [
-                      IconAnimate(child: SizedBox.shrink(), duration: 1500),
-                      IconAnimate(
+                    children: [
+                      AnimationFrame(child: SizedBox.shrink(), duration: 1500),
+                      AnimationFrame(
                           child: Container(
                             color: Colors.blue,
                             child: Center(
@@ -124,7 +136,11 @@ class _MyHomePageState extends State<MyHomePage> {
                             ),
                           ),
                           duration: 300),
-                      IconAnimate(
+                      AnimationFrame(
+                          icon: Icons.thumb_up,
+                          color: Colors.blue,
+                          duration: 500),
+                      AnimationFrame(
                           child: Container(
                             color: Colors.red,
                             child: Center(
@@ -137,20 +153,21 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
                 IconAnimator(
                   icon: null,
-                  animates: [
-                    IconAnimate(
+                  children: [
+                    AnimationFrame(
                         icon: Icons.volume_mute, size: 24, duration: 100),
-                    IconAnimate(
+                    AnimationFrame(
                         icon: Icons.volume_down, size: 24, duration: 100),
-                    IconAnimate(icon: Icons.volume_up, size: 24, duration: 100)
+                    AnimationFrame(
+                        icon: Icons.volume_up, size: 24, duration: 100)
                   ],
                 ),
                 IconAnimator(
                   icon: null,
-                  animates: [
-                    IconAnimate(
+                  children: [
+                    AnimationFrame(
                         icon: Icons.notifications, size: 24, duration: 100),
-                    IconAnimate(
+                    AnimationFrame(
                         icon: Icons.notifications_active,
                         size: 24,
                         duration: 100),
@@ -163,19 +180,29 @@ class _MyHomePageState extends State<MyHomePage> {
               height: 128,
               child: IconAnimator(
                 icon: Icons.gps_fixed,
-                animates: [
-                  IconAnimate(size: 0, duration: 100),
-                  IconAnimate(size: 4, color: Colors.grey[100], duration: 100),
-                  IconAnimate(size: 8, color: Colors.grey[200], duration: 100),
-                  IconAnimate(size: 16, color: Colors.grey[300], duration: 100),
-                  IconAnimate(size: 20, color: Colors.grey[400], duration: 150),
-                  IconAnimate(size: 24, color: Colors.grey[500], duration: 200),
-                  IconAnimate(size: 28, color: Colors.grey[600], duration: 250),
-                  IconAnimate(size: 32, color: Colors.grey[700], duration: 300),
-                  IconAnimate(size: 38, color: Colors.grey[800], duration: 300),
-                  IconAnimate(size: 56, color: Colors.grey[900], duration: 300),
-                  IconAnimate(size: 82, color: Colors.grey[900], duration: 300),
-                  IconAnimate(
+                children: [
+                  AnimationFrame(size: 0, duration: 100),
+                  AnimationFrame(
+                      size: 4, color: Colors.grey[100], duration: 100),
+                  AnimationFrame(
+                      size: 8, color: Colors.grey[200], duration: 100),
+                  AnimationFrame(
+                      size: 16, color: Colors.grey[300], duration: 100),
+                  AnimationFrame(
+                      size: 20, color: Colors.grey[400], duration: 150),
+                  AnimationFrame(
+                      size: 24, color: Colors.grey[500], duration: 200),
+                  AnimationFrame(
+                      size: 28, color: Colors.grey[600], duration: 250),
+                  AnimationFrame(
+                      size: 32, color: Colors.grey[700], duration: 300),
+                  AnimationFrame(
+                      size: 38, color: Colors.grey[800], duration: 300),
+                  AnimationFrame(
+                      size: 56, color: Colors.grey[900], duration: 300),
+                  AnimationFrame(
+                      size: 82, color: Colors.grey[900], duration: 300),
+                  AnimationFrame(
                       size: 128, color: Colors.grey[900], duration: 300),
                 ],
               ),

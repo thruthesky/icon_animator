@@ -4,8 +4,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-class IconAnimate {
-  IconAnimate({
+class AnimationFrame {
+  AnimationFrame({
     this.size,
     this.color,
     @required this.duration,
@@ -23,14 +23,14 @@ class IconAnimator extends StatefulWidget {
   IconAnimator({
     this.icon,
     this.finish,
-    @required this.animates,
+    @required this.children,
     this.loop,
     this.child,
   });
   final IconData icon;
   final Widget finish;
   final int loop;
-  final List<IconAnimate> animates;
+  final List<AnimationFrame> children;
   final Widget child;
   @override
   _IconAnimatorState createState() => _IconAnimatorState();
@@ -39,7 +39,7 @@ class IconAnimator extends StatefulWidget {
 class _IconAnimatorState extends State<IconAnimator> {
   int frameCount = 0;
   int loopCount = 0;
-  IconAnimate animate;
+  AnimationFrame animate;
   @override
   void initState() {
     super.initState();
@@ -49,13 +49,13 @@ class _IconAnimatorState extends State<IconAnimator> {
 
   resizeLoop() {
     setState(() {
-      animate = widget.animates[frameCount];
+      animate = widget.children[frameCount];
     });
     Timer(
-      Duration(milliseconds: widget.animates[frameCount].duration),
+      Duration(milliseconds: widget.children[frameCount].duration),
       () {
         frameCount++;
-        if (frameCount >= widget.animates.length) {
+        if (frameCount >= widget.children.length) {
           if (widget.loop != null) {
             loopCount++;
             if (loopCount >= widget.loop) {
