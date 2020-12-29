@@ -3,6 +3,12 @@
 Simple and highly configurable icon animation package with icon size, color, duration.
 
 
+## Options
+
+- `icon` is the IconData.
+- `child` is any widget that can be displayed instead of `icon`.
+- If `finish` is set, then it will be displayed when the loop has finished. You may pass `SizedBox.shrink()` to hide the icon.
+
 ## Example code
 
 ```dart

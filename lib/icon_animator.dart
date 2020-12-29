@@ -5,19 +5,33 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 class IconAnimate {
-  IconAnimate(
-      {@required this.size, this.color, @required this.duration, this.icon});
+  IconAnimate({
+    this.size,
+    this.color,
+    @required this.duration,
+    this.icon,
+    this.child,
+  });
   final double size;
   final Color color;
   final int duration;
   final IconData icon;
+  final Widget child;
 }
 
 class IconAnimator extends StatefulWidget {
-  IconAnimator({@required this.icon, @required this.resizes, this.loop});
+  IconAnimator({
+    this.icon,
+    this.finish,
+    @required this.animates,
+    this.loop,
+    this.child,
+  });
   final IconData icon;
+  final Widget finish;
   final int loop;
-  final List<IconAnimate> resizes;
+  final List<IconAnimate> animates;
+  final Widget child;
   @override
   _IconAnimatorState createState() => _IconAnimatorState();
 }
@@ -25,7 +39,7 @@ class IconAnimator extends StatefulWidget {
 class _IconAnimatorState extends State<IconAnimator> {
   int frameCount = 0;
   int loopCount = 0;
-  IconAnimate resize;
+  IconAnimate animate;
   @override
   void initState() {
     super.initState();
@@ -35,16 +49,20 @@ class _IconAnimatorState extends State<IconAnimator> {
 
   resizeLoop() {
     setState(() {
-      resize = widget.resizes[frameCount];
+      animate = widget.animates[frameCount];
     });
     Timer(
-      Duration(milliseconds: widget.resizes[frameCount].duration),
+      Duration(milliseconds: widget.animates[frameCount].duration),
       () {
         frameCount++;
-        if (frameCount >= widget.resizes.length) {
+        if (frameCount >= widget.animates.length) {
           if (widget.loop != null) {
             loopCount++;
-            if (loopCount >= widget.loop) return;
+            if (loopCount >= widget.loop) {
+              // finished
+              setState(() {});
+              return;
+            }
           }
           frameCount = 0;
         }
@@ -55,10 +73,31 @@ class _IconAnimatorState extends State<IconAnimator> {
 
   @override
   Widget build(BuildContext context) {
-    return Icon(
-      resize.icon != null ? resize.icon : widget.icon,
-      size: resize.size,
-      color: resize.color,
-    );
+    if (widget.loop != null && loopCount >= widget.loop) {
+      if (widget.finish != null) {
+        return widget.finish;
+      }
+    }
+    Widget child;
+    if (animate.child != null) {
+      child = animate.child;
+    } else if (widget.child != null) {
+      child = widget.child;
+    } else if (animate.icon != null) {
+      child = Icon(animate.icon);
+    } else if (widget.icon != null) {
+      child = Icon(widget.icon);
+    } else {
+      child = SizedBox.shrink();
+    }
+    if (child is Icon) {
+      return Icon(
+        animate.icon != null ? animate.icon : widget.icon,
+        size: animate.size,
+        color: animate.color,
+      );
+    } else {
+      return child;
+    }
   }
 }
