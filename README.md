@@ -2,7 +2,6 @@
 
 Simple and highly configurable icon animation package with icon size, color, duration. It can display any widgets, too.
 
-![Icon Animator](https://raw.githubusercontent.com/thruthesky/icon_animator/main/Icon%20Animator.gif)
 ## Options
 
 - `IconAnimator` can be set with some default options.
@@ -15,6 +14,8 @@ Simple and highly configurable icon animation package with icon size, color, dur
   - `duration` is the duration of each frame.
   - You can use in combination of icon and any widgets.
 ## Example code
+
+![Icon Animator](https://raw.githubusercontent.com/thruthesky/icon_animator/main/Icon%20Animator.gif)
 
 ```dart
 IconAnimator(
@@ -62,5 +63,76 @@ SizedBox(
             duration: 300),
     ],
     ),
+),
+```
+
+- A little complicated nested icon animator sample
+
+
+![Icon Animator 2](https://raw.githubusercontent.com/thruthesky/icon_animator/main/icon_animator_2.gif)
+
+```dart
+Positioned(
+  child: Center(
+    child: IconAnimator(
+      loop: 1,
+      child: Container(
+        padding: EdgeInsets.all(24),
+        decoration: BoxDecoration(
+            color: Color(0xcc444444),
+            borderRadius: BorderRadius.circular(12),
+            boxShadow: [
+              BoxShadow(
+                blurRadius: 8,
+                color: Color(0x88555555),
+                spreadRadius: 5,
+                offset: Offset(1.0, 1.0),
+              )
+            ]),
+        child: Column(
+          children: [
+            SizedBox(
+              width: 84,
+              height: 64,
+              child: IconAnimator(
+                loop: 2,
+                children: [
+                  AnimationFrame(
+                    duration: 250,
+                    child: Align(
+                      child: SvgIcon(leftSwipe,
+                          color: Colors.white, width: 64),
+                      alignment: Alignment.centerRight,
+                    ),
+                  ),
+                  AnimationFrame(
+                    duration: 250,
+                    child: Align(
+                      child: SvgIcon(leftSwipe,
+                          color: Colors.white, width: 64),
+                      alignment: Alignment.centerLeft,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(height: 32),
+            Text(
+              '다음 사진을 보시려면,\n왼쪽으로 밀어주세요.',
+              style: TextStyle(color: Colors.white),
+            )
+          ],
+        ),
+      ),
+      finish: SizedBox.shrink(),
+      children: [
+        AnimationFrame(duration: 1000, child: SizedBox.shrink()),
+        AnimationFrame(duration: 5000),
+      ],
+    ),
+  ),
+  top: 180,
+  left: 0,
+  right: 0,
 ),
 ```

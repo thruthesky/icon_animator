@@ -1,3 +1,6 @@
+## [0.0.3] - Document update
+
+* Document update only.
 ## [0.0.2] - Add finising widget and child option
 
 * When loop has finished, it can show a widget. `SizedBox.shrink()` may be used to hide the icon.
