@@ -48,6 +48,7 @@ class _IconAnimatorState extends State<IconAnimator> {
   }
 
   resizeLoop() {
+    if (!mounted) return;
     setState(() {
       animate = widget.children[frameCount];
     });
