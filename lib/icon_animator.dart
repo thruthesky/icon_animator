@@ -60,7 +60,7 @@ class _IconAnimatorState extends State<IconAnimator> {
             loopCount++;
             if (loopCount >= widget.loop) {
               // finished
-              setState(() {});
+              if (mounted) setState(() {});
               return;
             }
           }
