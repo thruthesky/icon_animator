@@ -1,3 +1,7 @@
+## [0.0.4] - mount check
+
+* Add mount check to avoid unmount exception.
+  
 ## [0.0.3] - Document update
 
 * Document update only.
